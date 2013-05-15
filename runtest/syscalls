@@ -75,7 +75,7 @@ chroot03 chroot03
 chroot04 chroot04
 
 clock_getres01 clock_getres01
-clock_nanosleep01 clock_nanosleep01
+#clock_nanosleep01 clock_nanosleep01
 clock_nanosleep2_01 clock_nanosleep2_01
 
 clone01 clone01
@@ -293,7 +293,7 @@ fork08 fork08
 fork09 fork09
 fork10 fork10
 fork11 fork11
-fork13 fork13 -i 1000000
+fork13 fork13 -i 10000
 fork14 fork14
 
 fpathconf01 fpathconf01
@@ -449,7 +449,7 @@ getxattr03 getxattr03
 
 # Introducing ioctl tests for all /dev/tty* devices
 ioctl01_02   test_ioctl
-ioctl03      ioctl03
+#ioctl03      ioctl03
 
 inotify_init1_01 inotify_init1_01
 inotify_init1_02 inotify_init1_02
