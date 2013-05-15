@@ -143,6 +143,14 @@ else
     AC_SUBST([WITH_REALTIME_TESTSUITE],["no"])
 fi
 
+# Support of Synopsys ARC Linux
+AC_ARG_ENABLE([arc-support],
+  [AC_HELP_STRING([--enable-arc-support],
+    [disable some tests that doesn't work with ARC Linux])],
+  [AC_SUBST([ENABLE_ARC_SUPPORT],[$enableval])],
+  [AC_SUBST([ENABLE_ARC_SUPPORT],["no"])]
+)
+
 # END testsuites knobs
 
 LTP_CHECK_MKDTEMP
