@@ -75,12 +75,7 @@ chroot03 chroot03
 chroot04 chroot04
 
 clock_getres01 clock_getres01
-<<<<<<< HEAD
-clock_nanosleep01 clock_nanosleep01
-clock_nanosleep02 clock_nanosleep02
-=======
 #clock_nanosleep01 clock_nanosleep01
->>>>>>> Import all changes required for ARC toolchain.
 clock_nanosleep2_01 clock_nanosleep2_01
 
 clone01 clone01
@@ -127,6 +122,7 @@ dup3_01 dup3_01
 dup3_02 dup3_02
 
 epoll_create1_01 epoll_create1_01
+<<<<<<< HEAD
 epoll01 epoll-ltp
 epoll_ctl01 epoll_ctl01
 epoll_ctl02 epoll_ctl02
@@ -134,6 +130,9 @@ epoll_wait01 epoll_wait01
 epoll_wait02 epoll_wait02
 epoll_wait03 epoll_wait03
 epoll_pwait01 epoll_pwait01
+=======
+#epoll01 epoll-ltp
+>>>>>>> disable tests which hangs on Linux 3.9 + toolchain 4.8.
 
 eventfd01 eventfd01
 
@@ -599,7 +598,7 @@ mkdir04 mkdir04
 mkdir05 mkdir05
 mkdir05A symlink01 -T mkdir05
 mkdir08 mkdir08
-mkdir09 mkdir09
+#mkdir09 mkdir09
 
 #mkdirat test cases
 mkdirat01 mkdirat01
@@ -1243,7 +1242,11 @@ socketpair02 socketpair02
 sockioctl01 sockioctl01
 
 splice01 splice01
+<<<<<<< HEAD
 splice02 seq 1 20000 | splice02
+=======
+#splice02 seq 1 10000000 | splice02 splice02-temp
+>>>>>>> disable tests which hangs on Linux 3.9 + toolchain 4.8.
 splice03 splice03
 splice04 splice04
 splice05 splice05
