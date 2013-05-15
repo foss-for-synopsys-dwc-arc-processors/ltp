@@ -43,9 +43,17 @@ them at once provide --enable-arc-support flag to ./configure command.
 * controllers/cpuset
 * security/tomoyo
 * kernel/syscalls/clock_nanosleep (also must be disable in ./runtest/syscalls)
-* kernel/syscalls/getdents - obscolete syscall, not available on ARC
-* kernel/syscalls/sysctl - obscolete syscall, not available on ARC
-* kernel/syscalls/ustat - obscolete syscall, not available on ARC.
+* kernel/syscalls/ustat - obscolete syscall, not available on ARC
+* misc/math/float/float_bessel - bessel extensions are not build in uClibc by default
+* misc/math/float/bessel - bessel extensions are not build in uClibc by default
+* network/lib6, sctp, stress, tcp_cmds - IP v6 is not built by default
+* kernel/timers/leapsec - uses clock_nanosleep
+* kernel/syscalls/flock/flock03 - build error
+* kernel/syscalls/fadvise - build error
+* kernel/syscalls/ustat - build error
+* security/prot_hsymlinks - build error
+* kernel/containers/mqns/check_mqns_enabled.c - linker error
+* kernel/containers/utsname/check_utsns_enabled.c - linker error.
 
 
 ### Tests with changed parameters

@@ -24,6 +24,8 @@
 #include "test.h"
 #include "mqns.h"
 
+char *TCID = "check_utsns_enabled";
+
 int dummy(void *v)
 {
 	return 0;

@@ -29,4 +29,9 @@ LDLIBS		+= -lpthread -lm
 # main.c doesn't compile...
 MAKE_TARGETS	:= $(patsubst $(abs_srcdir)/%.c,%,$(wildcard $(abs_srcdir)/float*.c))
 
+ifeq ($(ENABLE_ARC_SUPPORT), yes)
+FILTER_OUT_MAKE_TARGETS += float_bessel
+FILTER_OUT_DIRS += bessel
+endif
+
 include $(top_srcdir)/include/mk/generic_trunk_target.mk
