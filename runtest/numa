@@ -1,4 +1,4 @@
-Numa-testcases numa01.sh
+#Numa-testcases numa01.sh
 move_pages01 move_pages.sh 01
 move_pages02 move_pages.sh 02
 move_pages03 cd $LTPROOT/testcases/bin && chown root move_pages03 && chmod 04755 move_pages03 && move_pages.sh 03

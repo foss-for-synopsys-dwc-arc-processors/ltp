@@ -1,5 +1,5 @@
 #DESCRIPTION:Resource Management testing
-cgroup		cgroup_regression_test.sh
+#cgroup		cgroup_regression_test.sh
 memcg_regression	memcg_regression_test.sh
 memcg_test_3	memcg_test_3
 memcg_failcnt memcg_failcnt.sh
@@ -329,7 +329,7 @@ cgroup_fj_stress_hugetlb_10_3_each cgroup_fj_stress.sh hugetlb 10 3 each
 cgroup_fj_stress_hugetlb_1_200_each cgroup_fj_stress.sh hugetlb 1 200 each
 cgroup_fj_stress_hugetlb_200_1_each cgroup_fj_stress.sh hugetlb 200 1 each
 
-controllers	test_controllers.sh
+#controllers	test_controllers.sh
 
 cpuacct_1_1 cpuacct.sh 1 1
 cpuacct_1_10 cpuacct.sh 1 10

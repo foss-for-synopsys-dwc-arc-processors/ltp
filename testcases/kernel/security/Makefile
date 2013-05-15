@@ -28,6 +28,10 @@ ifneq ($(HAVE_SECUREBITS),yes)
 FILTER_OUT_DIRS		+= securebits
 endif
 
+ifeq ($(ENABLE_ARC_SUPPORT), yes)
+FILTER_OUT_DIRS += tomoyo
+endif
+
 OPT_CFLAGS		+= -O
 DEBUG_LDFLAGS		+= -s
 

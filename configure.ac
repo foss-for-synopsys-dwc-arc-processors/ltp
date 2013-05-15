@@ -141,6 +141,14 @@ AC_CONFIG_SUBDIRS([utils/ffsb-6.0-rc2])
 
 AC_CONFIG_COMMANDS([syscalls.h], [cd ${ac_top_srcdir}/include/lapi/syscalls; ./regen.sh])
 
+# Support of Synopsys ARC Linux
+AC_ARG_ENABLE([arc-support],
+  [AC_HELP_STRING([--enable-arc-support],
+    [disable some tests that doesn't work with ARC Linux])],
+  [AC_SUBST([ENABLE_ARC_SUPPORT],[$enableval])],
+  [AC_SUBST([ENABLE_ARC_SUPPORT],["no"])]
+)
+
 # END testsuites knobs
 LTP_CHECK_FORTIFY_SOURCE
 LTP_CHECK_CC_WARN_OLDSTYLE
