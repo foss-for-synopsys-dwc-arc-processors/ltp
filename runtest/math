@@ -3,7 +3,7 @@ abs01 abs01
 
 atof01 atof01
 
-float_bessel cd $LTPROOT/testcases/bin; float_bessel -v -n 1 -l 1
+#float_bessel cd $LTPROOT/testcases/bin; float_bessel -v -n 1 -l 1
 float_exp_log cd $LTPROOT/testcases/bin; float_exp_log -v -n 1 -l 1
 float_iperb cd $LTPROOT/testcases/bin; float_iperb -v -n 1 -l 1
 float_power cd $LTPROOT/testcases/bin; float_power -v -n 1 -l 1
