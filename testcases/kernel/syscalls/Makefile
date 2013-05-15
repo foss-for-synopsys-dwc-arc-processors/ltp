@@ -29,4 +29,8 @@ FILTER_OUT_DIRS	+= capget capset chmod chown clone fork getcontext llseek \
 		   mincore mprotect nftw profil remap_file_pages sbrk
 endif
 
+ifeq ($(ENABLE_ARC_SUPPORT), yes)
+FILTER_OUT_DIRS += clock_nanosleep
+endif
+
 include $(top_srcdir)/include/mk/generic_trunk_target.mk

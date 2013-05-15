@@ -1,5 +1,5 @@
 #DESCRIPTION:Resource Management testing
-cgroup		cgroup_regression_test.sh
+#cgroup		cgroup_regression_test.sh
 memcg_regression	memcg_regression_test.sh
 memcg_function		memcg_function_test.sh
 memcg_max_usage_in_bytes	memcg_max_usage_in_bytes_test.sh
@@ -206,7 +206,7 @@ cgroup_fj_stress_memory_1_100_1_3 run_cgroup_test_fj.sh stress memory 1 100 1 3
 cgroup_fj_stress_memory_1_100_100_1 run_cgroup_test_fj.sh stress memory 1 100 100 1
 cgroup_fj_stress_memory_1_100_100_2 run_cgroup_test_fj.sh stress memory 1 100 100 2
 
-controllers	test_controllers.sh
+#controllers	test_controllers.sh
 
 cpuset_base_ops	cpuset_base_ops_testset.sh
 cpuset_inherit	cpuset_inherit_testset.sh
