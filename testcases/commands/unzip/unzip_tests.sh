@@ -102,17 +102,17 @@ init()
 	Archive:  $1
     creating: tst_unzip.dir/
     creating: tst_unzip.dir/d.0/
-    extracting: tst_unzip.dir/d.0/f.0
-    extracting: tst_unzip.dir/d.0/f.1
-    extracting: tst_unzip.dir/d.0/f.2
+    inflating: tst_unzip.dir/d.0/f.0
+    inflating: tst_unzip.dir/d.0/f.1
+    inflating: tst_unzip.dir/d.0/f.2
     creating: tst_unzip.dir/d.0/d.1/
-    extracting: tst_unzip.dir/d.0/d.1/f.0
-    extracting: tst_unzip.dir/d.0/d.1/f.1
-    extracting: tst_unzip.dir/d.0/d.1/f.2
+    inflating: tst_unzip.dir/d.0/d.1/f.0
+    inflating: tst_unzip.dir/d.0/d.1/f.1
+    inflating: tst_unzip.dir/d.0/d.1/f.2
     creating: tst_unzip.dir/d.0/d.1/d.2/
-    extracting: tst_unzip.dir/d.0/d.1/d.2/f.0
-    extracting: tst_unzip.dir/d.0/d.1/d.2/f.1
-    extracting: tst_unzip.dir/d.0/d.1/d.2/f.2
+    inflating: tst_unzip.dir/d.0/d.1/d.2/f.0
+    inflating: tst_unzip.dir/d.0/d.1/d.2/f.1
+    inflating: tst_unzip.dir/d.0/d.1/d.2/f.2
 	EOF
 
 	return $RC
