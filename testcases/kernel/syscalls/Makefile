@@ -45,4 +45,8 @@ FILTER_OUT_DIRS	+= \
 	setdomainname sethostname symlinkat ulimit ustat vfork vhangup vmsplice
 endif
 
+ifeq ($(ENABLE_ARC_SUPPORT), yes)
+FILTER_OUT_DIRS += clock_nanosleep
+endif
+
 include $(top_srcdir)/include/mk/generic_trunk_target.mk
