@@ -121,7 +121,7 @@ dup3_01 dup3_01
 dup3_02 dup3_02
 
 epoll_create1_01 epoll_create1_01
-epoll01 epoll-ltp
+#epoll01 epoll-ltp
 epoll_ctl01 epoll_ctl01
 epoll_ctl02 epoll_ctl02
 epoll_wait01 epoll_wait01
@@ -573,7 +573,7 @@ mkdir04 mkdir04
 mkdir05 mkdir05
 mkdir05A symlink01 -T mkdir05
 mkdir08 mkdir08
-mkdir09 mkdir09
+#mkdir09 mkdir09
 
 #mkdirat test cases
 mkdirat01 mkdirat01
@@ -1206,7 +1206,7 @@ socketpair02 socketpair02
 sockioctl01 sockioctl01
 
 splice01 splice01
-splice02 seq 1 10000000 | splice02 splice02-temp
+#splice02 seq 1 10000000 | splice02 splice02-temp
 splice03 splice03
 
 tee01 tee01
