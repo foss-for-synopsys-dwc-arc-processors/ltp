@@ -29,7 +29,7 @@ FILTER_OUT_DIRS		+= securebits
 endif
 
 ifeq ($(ENABLE_ARC_SUPPORT), yes)
-FILTER_OUT_DIRS += tomoyo
+FILTER_OUT_DIRS += tomoyo prot_hsymlinks
 endif
 
 OPT_CFLAGS		+= -O
