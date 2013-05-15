@@ -24,4 +24,8 @@ top_srcdir		?= ../../..
 
 include $(top_srcdir)/include/mk/env_pre.mk
 
+ifeq ($(ENABLE_ARC_SUPPORT), yes)
+FILTER_OUT_DIRS += leapsec
+endif
+
 include $(top_srcdir)/include/mk/generic_trunk_target.mk

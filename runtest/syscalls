@@ -73,7 +73,7 @@ chroot03 chroot03
 chroot04 chroot04
 
 clock_getres01 clock_getres01
-clock_nanosleep01 clock_nanosleep01
+#clock_nanosleep01 clock_nanosleep01
 clock_nanosleep2_01 clock_nanosleep2_01
 
 clone01 clone01
@@ -119,7 +119,7 @@ dup3_01 dup3_01
 dup3_02 dup3_02
 
 epoll_create1_01 epoll_create1_01
-epoll01 epoll-ltp
+#epoll01 epoll-ltp
 epoll_ctl01 epoll_ctl01
 epoll_ctl02 epoll_ctl02
 epoll_wait01 epoll_wait01
@@ -225,14 +225,14 @@ fcntl12 fcntl12
 fcntl12_64 fcntl12_64
 fcntl13 fcntl13
 fcntl13_64 fcntl13_64
-fcntl14 fcntl14
-fcntl14_64 fcntl14_64
+#fcntl14 fcntl14
+#fcntl14_64 fcntl14_64
 fcntl15 fcntl15
 fcntl15_64 fcntl15_64
 fcntl16 fcntl16
 fcntl16_64 fcntl16_64
-fcntl17 fcntl17
-fcntl17_64 fcntl17_64
+#fcntl17 fcntl17
+#fcntl17_64 fcntl17_64
 fcntl18 fcntl18
 fcntl18_64 fcntl18_64
 fcntl19 fcntl19
@@ -265,8 +265,8 @@ fcntl32 fcntl32
 fcntl32_64 fcntl32_64
 fcntl33 fcntl33
 fcntl33_64 fcntl33_64
-fcntl34 fcntl34
-fcntl34_64 fcntl34_64
+#fcntl34 fcntl34
+#fcntl34_64 fcntl34_64
 
 fdatasync01 fdatasync01
 fdatasync02 fdatasync02
@@ -295,7 +295,7 @@ fork08 fork08
 fork09 fork09
 fork10 fork10
 fork11 fork11
-fork13 fork13 -i 1000000
+fork13 fork13 -i 10000
 fork14 fork14
 
 fpathconf01 fpathconf01
@@ -451,7 +451,7 @@ getxattr03 getxattr03
 
 # Introducing ioctl tests for all /dev/tty* devices
 ioctl01_02   test_ioctl
-ioctl03      ioctl03
+#ioctl03      ioctl03
 
 inotify_init1_01 inotify_init1_01
 inotify_init1_02 inotify_init1_02
@@ -498,8 +498,8 @@ kill07 kill07
 kill08 kill08
 kill09 kill09
 kill10 kill10
-kill11 kill11
-kill12 kill12
+#kill11 kill11
+#kill12 kill12
 
 lchown01 lchown01
 lchown01_16 lchown01_16
@@ -580,7 +580,7 @@ mkdir04 mkdir04
 mkdir05 mkdir05
 mkdir05A symlink01 -T mkdir05
 mkdir08 mkdir08
-mkdir09 mkdir09
+#mkdir09 mkdir09
 
 #mkdirat test cases
 mkdirat01 mkdirat01
@@ -671,10 +671,10 @@ msgctl04 msgctl04
 msgctl05 msgctl05
 msgctl06 msgctl06
 msgctl07 msgctl07
-msgctl08 msgctl08
-msgctl09 msgctl09
-msgctl10 msgctl10
-msgctl11 msgctl11
+#msgctl08 msgctl08
+#msgctl09 msgctl09
+#msgctl10 msgctl10
+#msgctl11 msgctl11
 msgctl12 msgctl12
 msgctl13 msgctl13
 
@@ -993,8 +993,8 @@ sendfile02 sendfile02
 sendfile02_64 sendfile02_64
 sendfile03 sendfile03
 sendfile03_64 sendfile03_64
-sendfile04 sendfile04
-sendfile04_64 sendfile04_64
+#sendfile04 sendfile04
+#sendfile04_64 sendfile04_64
 sendfile05 sendfile05
 sendfile05_64 sendfile05_64
 sendfile06 sendfile06
@@ -1172,7 +1172,7 @@ sigaltstack01 sigaltstack01
 sigaltstack02 sigaltstack02
 
 
-sighold02 sighold02
+#sighold02 sighold02
 
 signal01 signal01
 signal02 signal02
@@ -1190,7 +1190,7 @@ sigpending02 sigpending02
 
 sigprocmask01 sigprocmask01
 
-sigrelse01 sigrelse01
+#sigrelse01 sigrelse01
 
 sigsuspend01 sigsuspend01
 
@@ -1384,7 +1384,7 @@ utimes01 utimes01
 utimensat01 utimensat_tests.sh
 
 vfork01 vfork01
-vfork02 vfork02
+#vfork02 vfork02
 
 vhangup01 vhangup01
 vhangup02 vhangup02
