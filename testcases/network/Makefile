@@ -43,6 +43,10 @@ $(INSTALL_TARGETS): | generate
 
 .PHONY: generate
 
+ifeq ($(ENABLE_ARC_SUPPORT), yes)
+FILTER_OUT_DIRS += lib6 sctp stress tcp_cmds
+endif
+
 include $(top_srcdir)/include/mk/generic_trunk_target.mk
 
 $(DESTDIR)/$(INSTALL_DIR)/$(DIR) $(DIR): %:
