@@ -82,6 +82,10 @@ These tests cause system to crash or hung so they must be disabled.
 
 * syscalls/sendfile04 - it is required to find why this tests causes system to hang
 * syscalls/sendfile04_64 - it is required to find why this tests causes system to hang.
+* syscalls/mkdir09 - hangs system
+* syscalls/pth_str02 - hangs system
+* syscalls/epoll-ltp - hangs system
+* syscalls/splice02 - hangs system
 
 
 ### Not applicable tests
