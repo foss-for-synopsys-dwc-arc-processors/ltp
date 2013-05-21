@@ -1,20 +1,19 @@
 /*
+ * Copyright (c) International Business Machines  Corp., 2001
  *
- *   Copyright (c) International Business Machines  Corp., 2001
+ * This program is free software;  you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *   This program is free software;  you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation; either version 2 of the License, or
- *   (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY;  without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See
+ * the GNU General Public License for more details.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY;  without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See
- *   the GNU General Public License for more details.
- *
- *   You should have received a copy of the GNU General Public License
- *   along with this program;  if not, write to the Free Software
- *   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ * You should have received a copy of the GNU General Public License
+ * along with this program;  if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
 /*
@@ -38,83 +37,64 @@
  *		otherwise
  *			issue a FAIL message
  *	call cleanup
- *
- * USAGE:  <for command-line>
- *  shmat01 [-c n] [-f] [-i n] [-I x] [-P x] [-t]
- *     where,  -c n : Run n copies concurrently.
- *             -f   : Turn off functionality Testing.
- *	       -i n : Execute test n times.
- *	       -I x : Execute test for x seconds.
- *	       -P x : Pause for x seconds between iterations.
- *	       -t   : Turn on syscall timing.
- *
- * HISTORY
- *	03/2001 - Written by Wayne Boyer
- *
- * RESTRICTIONS
- *	none
  */
 
 #include "ipcshm.h"
 #include "shmat_common.h"
 
+#define CASE0		10
+#define CASE1		20
+
 char *TCID = "shmat01";
-
-static void check_functionality(int);
-
-#define CASE0		10	/* values to write into the shared */
-#define CASE1		20	/* memory location.                */
+int TST_TOTAL = 4;
 
 int shm_id_1 = -1;
 
-void *base_addr;		/* By probing this address first, we can make
-				 * non-aligned addresses from it for different
-				 * architectures without explicitly code it.
-				 */
+/*
+ * By probing this address first, we can make
+ * non-aligned addresses from it for different
+ * architectures without explicitly code it.
+ */
+void *base_addr;
+void *addr;
 
-void *addr;			/* for result of shmat-call */
-
-struct test_case_t {
+static struct test_case_t {
 	int *shmid;
 	int offset;
 	int flags;
-};
+	int getbase;
+} *TC;
 
-int TST_TOTAL = 3;
+static void check_functionality(int);
 
-struct test_case_t *TC;
-
-int main(int ac, char **av)
+int main(int argc, char *argv[])
 {
-	int lc;
+	int lc, i;
 	char *msg;
-	int i;
+	void *attchaddr;
 
-	msg = parse_opts(ac, av, NULL, NULL);
+	msg = parse_opts(argc, argv, NULL, NULL);
 	if (msg != NULL)
 		tst_brkm(TBROK, NULL, "OPTION PARSING ERROR - %s", msg);
 
-	setup();		/* global setup */
-
-	/* The following loop checks looping state if -i option given */
+	setup();
 
 	for (lc = 0; TEST_LOOPING(lc); lc++) {
 
-		/* reset tst_count in case we are looping */
 		tst_count = 0;
 
-		/* loop through the test cases */
 		for (i = 0; i < TST_TOTAL; i++) {
 
-			/*
-			 * Use TEST macro to make the call
-			 */
-			base_addr = probe_free_addr();
-			errno = 0;
-			addr = shmat(*(TC[i].shmid), base_addr + TC[i].offset,
-				     TC[i].flags);
-			TEST_ERRNO = errno;
+			if (TC[i].getbase) {
+				base_addr = probe_free_addr();
+				attchaddr = base_addr + TC[i].offset;
+			} else {
+				attchaddr = NULL;
+			}
 
+			addr = shmat(*(TC[i].shmid), attchaddr, TC[i].flags);
+
+			TEST_ERRNO = errno;
 			if (addr == (void *)-1) {
 				tst_brkm(TFAIL | TTERRNO, cleanup,
 					 "shmat call failed");
@@ -125,10 +105,6 @@ int main(int ac, char **av)
 					tst_resm(TPASS, "call succeeded");
 			}
 
-			/*
-			 * clean up things in case we are looping - in
-			 * this case, detach the shared memory
-			 */
 			if (shmdt(addr) == -1)
 				tst_brkm(TBROK, cleanup,
 					 "Couldn't detach shared memory");
@@ -172,35 +148,36 @@ static void check_functionality(int i)
 	/* check for specific conditions depending on the type of attach */
 	switch (i) {
 	case 0:
+	case 1:
 		/*
-		 * Check the functionality of the first call by simply
-		 * "writing" a value to the shared memory space.
+		 * Check the functionality of shmat by simply "writing"
+		 * a value to the shared memory space.
 		 * If this fails the program will get a SIGSEGV, dump
 		 * core and exit.
 		 */
 
 		*shared = CASE0;
 		break;
-	case 1:
+	case 2:
 		/*
-		 * Check the functionality of the second call by writing
-		 * a value to the shared memory space and then checking
-		 * that the original address given was rounded down as
+		 * Check the functionality of shmat by writing a value
+		 * to the shared memory space and then checking that
+		 * the original address given was rounded down as
 		 * specified in the man page.
 		 */
 
 		*shared = CASE1;
-		orig_add = addr + ((unsigned long)TC[1].offset % SHMLBA);
-		if (orig_add != base_addr + TC[1].offset) {
+		orig_add = addr + ((unsigned long)TC[2].offset % SHMLBA);
+		if (orig_add != base_addr + TC[2].offset) {
 			tst_resm(TFAIL, "shared memory address is not "
 				 "correct");
 			fail = 1;
 		}
 		break;
-	case 2:
+	case 3:
 		/*
 		 * This time the shared memory is read only.  Read the value
-		 * and check that it is equal to the value set in case #2,
+		 * and check that it is equal to the value set in last case,
 		 * because shared memory is persistent.
 		 */
 
@@ -215,12 +192,8 @@ static void check_functionality(int i)
 		tst_resm(TPASS, "conditions and functionality are correct");
 }
 
-/*
- * setup() - performs all the ONE TIME setup for this test.
- */
 void setup(void)
 {
-
 	tst_sig(NOFORK, DEF_HANDLER, cleanup);
 
 	TEST_PAUSE;
@@ -229,46 +202,42 @@ void setup(void)
 	if (TC == NULL)
 		tst_brkm(TFAIL | TERRNO, cleanup, "failed to allocate memory");
 
-	/* a straight forward read/write attach */
+	/* set NULL as attaching address*/
 	TC[0].shmid = &shm_id_1;
 	TC[0].offset = 0;
 	TC[0].flags = 0;
+	TC[0].getbase = 0;
+
+	/* a straight forward read/write attach */
+	TC[1].shmid = &shm_id_1;
+	TC[1].offset = 0;
+	TC[1].flags = 0;
+	TC[1].getbase = 1;
 
 	/* an attach using unaligned memory */
-	TC[1].shmid = &shm_id_1;
-	TC[1].offset = SHMLBA - 1;
-	TC[1].flags = SHM_RND;
+	TC[2].shmid = &shm_id_1;
+	TC[2].offset = SHMLBA - 1;
+	TC[2].flags = SHM_RND;
+	TC[2].getbase = 1;
 
 	/* a read only attach */
-	TC[2].shmid = &shm_id_1;
-	TC[2].offset = 0;
-	TC[2].flags = SHM_RDONLY;
+	TC[3].shmid = &shm_id_1;
+	TC[3].offset = 0;
+	TC[3].flags = SHM_RDONLY;
+	TC[3].getbase = 1;
 
-	/*
-	 * Create a temporary directory and cd into it.
-	 * This helps to ensure that a unique msgkey is created.
-	 * See ../lib/libipc.c for more information.
-	 */
 	tst_tmpdir();
 
-	/* Get an IPC resouce key */
 	shmkey = getipckey();
 
-	/* create a shared memory resource with read and write permissions */
 	shm_id_1 = shmget(shmkey++, INT_SIZE, SHM_RW | IPC_CREAT | IPC_EXCL);
 	if (shm_id_1 == -1)
 		tst_brkm(TBROK, cleanup, "Failed to create shared memory "
 			 "resource 1 in setup()");
 }
 
-/*
- * cleanup() - performs all the ONE TIME cleanup for this test at completion
- *		or premature exit.
- */
 void cleanup(void)
 {
-
-	/* if it exists, remove the shared memory resource */
 	rm_shm(shm_id_1);
 
 	if (TC != NULL)
@@ -276,10 +245,5 @@ void cleanup(void)
 
 	tst_rmdir();
 
-	/*
-	 * print timing stats if that option was specified.
-	 * print errno log if that option was specified.
-	 */
 	TEST_CLEANUP;
-
 }

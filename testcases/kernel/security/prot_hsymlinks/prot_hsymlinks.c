@@ -31,6 +31,7 @@
  * of the file or he doesn't have write access to the file.
  */
 
+#define _GNU_SOURCE
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <pwd.h>
@@ -195,10 +196,9 @@ static void setup(int argc, char *argv[])
 
 	tst_require_root(NULL);
 
-	if (tst_kvercmp(3, 7, 0) < 0) {
-		tst_brkm(TCONF, cleanup,
+	if (tst_kvercmp(3, 7, 0) < 0)
+		tst_brkm(TCONF, NULL,
 			"Test must be run with kernel 3.7 or newer");
-	}
 
 	/* initialize user names */
 	strcpy(users[ROOT].name, "root");
