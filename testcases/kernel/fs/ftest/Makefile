@@ -26,6 +26,10 @@ include $(top_srcdir)/include/mk/testcases.mk
 
 FILTER_OUT_MAKE_TARGETS		:= libftest
 
+ifeq ($(ENABLE_ARC_SUPPORT),yes)
+FILTER_OUT_MAKE_TARGETS += $(addprefix  ftest,  01 03 04 05 07 08)
+endif
+
 include $(top_srcdir)/include/mk/generic_leaf_target.mk
 
 $(MAKE_TARGETS): %: %.o libftest.o

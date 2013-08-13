@@ -30,6 +30,10 @@ fcntl36_64: LDLIBS += -lpthread
 include $(top_srcdir)/include/mk/testcases.mk
 include $(abs_srcdir)/../utils/newer_64.mk
 
+ifeq ($(ENABLE_ARC_SUPPORT), yes)
+FILTER_OUT_MAKE_TARGETS += $(addprefix fcntl, 14 14_64 17 17_64)
+endif
+
 %_64: CPPFLAGS += -D_FILE_OFFSET_BITS=64
 
 CPPFLAGS		+= -D_GNU_SOURCE
