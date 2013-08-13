@@ -55,6 +55,20 @@ them at once provide --enable-arc-support flag to ./configure command.
 * kernel/containers/mqns/check_mqns_enabled.c - linker error
 * kernel/containers/utsname/check_utsns_enabled.c - linker error.
 
+Several tests use obsolete BSD signal system calls. These calls are disabled in
+buildroot uClibc configuration and so they are disabled by default for ARC. You
+can enable them if you build uClibc with support for obsolete BSD systemc calls:
+* kernel/fs/ftest01, 03, 04, 05, 07, 08
+* kernel/fs/inode02
+* kernel/mem/mmapstress01, 09, 10
+* kernel/mem/vmtests/data_space
+* kernel/syscalls/sighold
+* kernel/syscalls/sigrelse
+* kernel/syscalls/fcntl14, 14_64, 17, 17_64
+* kernel/syscalls/kill11, 12
+* kernel/syscalls/vfork02
+* kernel/syscalls/ipc/msgctl08, 09, 10, 11
+
 
 ### Tests with changed parameters
 

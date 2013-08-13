@@ -38,4 +38,8 @@ CPPFLAGS                += -I$(abs_srcdir)/$(LIBDIR)
 
 LDFLAGS                 += -L$(abs_builddir)/$(LIBDIR)
 
+ifeq ($(ENABLE_ARC_SUPPORT),yes)
+FILTER_OUT_MAKE_TARGETS += $(addprefix kill, 11 12)
+endif
+
 include $(top_srcdir)/include/mk/generic_leaf_target.mk
