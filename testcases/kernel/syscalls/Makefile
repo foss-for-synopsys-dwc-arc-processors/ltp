@@ -30,7 +30,7 @@ FILTER_OUT_DIRS	+= capget capset chmod chown clone fork getcontext llseek \
 endif
 
 ifeq ($(ENABLE_ARC_SUPPORT), yes)
-FILTER_OUT_DIRS += clock_nanosleep fadvise ustat
+FILTER_OUT_DIRS += clock_nanosleep fadvise ustat sighold sigrelse
 endif
 
 include $(top_srcdir)/include/mk/generic_trunk_target.mk
