@@ -26,4 +26,8 @@ include $(top_srcdir)/include/mk/testcases.mk
 
 CPPFLAGS			+= -DLINUX
 
+ifeq ($(ENABLE_ARC_SUPPORT),yes)
+FILTER_OUT_MAKE_TARGETS += $(addprefix inode, 02)
+endif
+
 include $(top_srcdir)/include/mk/generic_leaf_target.mk
