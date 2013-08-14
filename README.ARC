@@ -14,7 +14,7 @@ order for LTP to build and run succesfully.
 git clone git://github.com/anthony-kolesov/ltp.git
 cd ltp
 make autotools
-./configure --host=arc-linux-uclibc CC=arc-linux-uclibc-gcc STRIP=arc-linux-uclibc-strip --enable-arc-support CFLAGS="-Dlinux -DUCLINUX"
+./configure --host=arc-linux-uclibc CC=arc-linux-uclibc-gcc STRIP=arc-linux-uclibc-strip --enable-arc-support CFLAGS="-Dlinux"
 make
 sudo make install
 ```
