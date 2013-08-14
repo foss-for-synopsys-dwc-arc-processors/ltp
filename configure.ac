@@ -147,7 +147,7 @@ fi
 AC_ARG_ENABLE([arc-support],
   [AC_HELP_STRING([--enable-arc-support],
     [disable some tests that doesn't work with ARC Linux])],
-  [AC_SUBST([ENABLE_ARC_SUPPORT],[$enableval])] [AC_DEFINE([ARC_SUPPORT], 1, ["Disable test not applicable to ARC"])]
+  [AC_SUBST([ENABLE_ARC_SUPPORT],[$enableval])] [AC_DEFINE([ARC_SUPPORT], 1, ["Disable test not applicable to ARC"])],
   [AC_SUBST([ENABLE_ARC_SUPPORT],["no"])] [AC_DEFINE([ARC_SUPPORT], 0, ["Enable tests not applicable to ARC"])]
 )
 
