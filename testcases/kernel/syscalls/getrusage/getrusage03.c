@@ -39,6 +39,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "config.h"
 #include "test.h"
 #include "safe_macros.h"
 
@@ -83,7 +84,7 @@ int main(int argc, char *argv[])
 		inherit_fork2();
 		fork_malloc();
 		grandchild_maxrss();
-#ifndef ARC_SUPPORT
+#if ARC_SUPPORT == 0
 		zombie();
 		sig_ign();
 #endif
