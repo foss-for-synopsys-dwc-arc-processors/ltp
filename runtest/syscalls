@@ -233,14 +233,14 @@ fcntl12 fcntl12
 fcntl12_64 fcntl12_64
 fcntl13 fcntl13
 fcntl13_64 fcntl13_64
-fcntl14 fcntl14
-fcntl14_64 fcntl14_64
+#fcntl14 fcntl14
+#fcntl14_64 fcntl14_64
 fcntl15 fcntl15
 fcntl15_64 fcntl15_64
 fcntl16 fcntl16
 fcntl16_64 fcntl16_64
-fcntl17 fcntl17
-fcntl17_64 fcntl17_64
+#fcntl17 fcntl17
+#fcntl17_64 fcntl17_64
 fcntl18 fcntl18
 fcntl18_64 fcntl18_64
 fcntl19 fcntl19
@@ -522,8 +522,8 @@ kill07 kill07
 kill08 kill08
 kill09 kill09
 kill10 kill10
-kill11 kill11
-kill12 kill12
+#kill11 kill11
+#kill12 kill12
 
 lchown01 lchown01
 lchown01_16 lchown01_16
@@ -690,10 +690,10 @@ msgctl04 msgctl04
 msgctl05 msgctl05
 msgctl06 msgctl06
 msgctl07 msgctl07
-msgctl08 msgctl08
-msgctl09 msgctl09
-msgctl10 msgctl10
-msgctl11 msgctl11
+#msgctl08 msgctl08
+#msgctl09 msgctl09
+#msgctl10 msgctl10
+#msgctl11 msgctl11
 msgctl12 msgctl12
 msgctl13 msgctl13
 
@@ -1204,7 +1204,7 @@ sigaltstack01 sigaltstack01
 sigaltstack02 sigaltstack02
 
 
-sighold02 sighold02
+#sighold02 sighold02
 
 signal01 signal01
 signal02 signal02
@@ -1222,7 +1222,7 @@ sigpending02 sigpending02
 
 sigprocmask01 sigprocmask01
 
-sigrelse01 sigrelse01
+#sigrelse01 sigrelse01
 
 sigsuspend01 sigsuspend01
 
@@ -1424,7 +1424,7 @@ utimes01 utimes01
 utimensat01 utimensat_tests.sh
 
 vfork01 vfork01
-vfork02 vfork02
+#vfork02 vfork02
 
 vhangup01 vhangup01
 vhangup02 vhangup02
