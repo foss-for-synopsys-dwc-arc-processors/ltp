@@ -83,8 +83,10 @@ int main(int argc, char *argv[])
 		inherit_fork2();
 		fork_malloc();
 		grandchild_maxrss();
+#ifndef ARC_SUPPORT
 		zombie();
 		sig_ign();
+#endif
 		exec_without_fork();
 	}
 	cleanup();
