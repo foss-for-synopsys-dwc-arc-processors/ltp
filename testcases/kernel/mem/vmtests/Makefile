@@ -19,4 +19,9 @@
 top_srcdir              ?= ../../../..
 
 include $(top_srcdir)/include/mk/testcases.mk
+
+ifeq ($(ENABLE_ARC_SUPPORT),yes)
+FILTER_OUT_MAKE_TARGETS += data_space
+endif
+
 include $(top_srcdir)/include/mk/generic_leaf_target.mk

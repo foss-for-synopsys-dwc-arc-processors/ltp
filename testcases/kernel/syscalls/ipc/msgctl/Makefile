@@ -20,4 +20,9 @@ top_srcdir              ?= ../../../../..
 
 include $(top_srcdir)/include/mk/testcases.mk
 include $(abs_srcdir)/../Makefile.inc
+
+ifeq ($(ENABLE_ARC_SUPPORT),yes)
+FILTER_OUT_MAKE_TARGETS += $(addprefix msgctl, 08 09 10 11)
+endif
+
 include $(top_srcdir)/include/mk/generic_leaf_target.mk
