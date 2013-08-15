@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 		inherit_fork2();
 		fork_malloc();
 		grandchild_maxrss();
-#if ARC_SUPPORT == 0
+#ifndef
 		zombie();
 		sig_ign();
 #endif
