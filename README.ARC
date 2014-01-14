@@ -103,6 +103,7 @@ These tests cause system to crash or hung so they must be disabled.
 * syscalls/pth_str02 - hangs system
 * syscalls/epoll-ltp - hangs system
 * syscalls/splice02 - hangs system
+* mm/mallocstress01 - hangs system.
 
 
 ### Not applicable tests
