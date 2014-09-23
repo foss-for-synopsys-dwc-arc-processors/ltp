@@ -110,6 +110,7 @@ These tests cause system to crash or hung so they must be disabled.
 * syscalls/epoll-ltp - hangs system
 * syscalls/splice02 - hangs system
 * mm/mallocstress01 - hangs system.
+* syscalls/shmdt01 - Hangs system. STAR 9000796673
 
 
 ### Not applicable tests
