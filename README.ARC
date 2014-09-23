@@ -21,6 +21,12 @@ sudo make install
 
 If you want to make out-of-tree then consult `INSTALL` for details and possible issues.
 
+To add Open Posix Test suite to the list of tests, add option
+`--with-open-posix-testsuite` to configure. Also set `CC` for make:
+```
+make CC=arc-linux-uclibc-gcc
+```
+
 
 ## Run on target
 
