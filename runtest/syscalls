@@ -1183,7 +1183,8 @@ shmctl02 shmctl02
 shmctl03 shmctl03
 shmctl04 shmctl04
 
-shmdt01 shmdt01
+# See STAR 9000796673
+# shmdt01 shmdt01
 shmdt02 shmdt02
 
 shmget01 shmget01
