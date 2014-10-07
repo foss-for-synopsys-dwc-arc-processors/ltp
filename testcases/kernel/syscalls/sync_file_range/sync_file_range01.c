@@ -211,7 +211,7 @@ static inline long syncfilerange(int fd, off64_t offset, off64_t nbytes,
 	return ltp_syscall(__NR_sync_file_range2, fd, flags, offset, nbytes);
 #endif
 
-#elif defined(ARC_SUPPORT)
+#elif defined(__arc__)  //ARC_SUPPORT == 1
 	return sync_file_range(fd, offset, nbytes, flags);
 
 /* s390 */
