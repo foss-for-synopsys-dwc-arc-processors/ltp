@@ -97,6 +97,8 @@ are too big for an embedded system.
 * syscalls/getrusage03 - Some of test cases in it allocate large amounts of
   memory which are not available in our default Linux setup. These cases are
   disabled inside the C source with preprocessor for ARC.
+* mm/mallocstress01 - default loop iters 100 and 60 threads take too long
+  So iters reduced to 10
 
 
 ### Fatal tests
