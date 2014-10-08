@@ -99,6 +99,8 @@ are too big for an embedded system.
   disabled inside the C source with preprocessor for ARC.
 * syscalls/splice02 - change input from seq 1 10000000 to seq 1 20000
   The stock value takes 30+ mins on FPGA @ 50MHz
+* mm/mallocstress01 - default loop iters 100 and 60 threads take too long
+  So iters reduced to 10
 
 
 ### Fatal tests
