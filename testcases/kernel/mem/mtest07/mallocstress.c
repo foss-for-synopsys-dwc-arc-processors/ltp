@@ -102,22 +102,46 @@ static void my_yield(void)
 #endif
 }
 
-/*
- * allocate_free() - Allocate and free test called per-thread
- *
- * @scheme: 0-3; selects how fast memory size grows
- *
- * This function does the allocation and free by calling malloc
- * and free functions. The size of the memory to be malloced is
- * determined by the caller of this function. The size can be
- * a number from the fibannoaci series, power of 2 or 3 or 5
- *
- * Return:
- *  0: success
- *  1: failure
- */
-int allocate_free(int scheme)
-{
+
+/******************************************************************************/
+/*								 	      */
+/* Function:	usage							      */
+/*									      */
+/* Description:	Print the usage message.				      */
+/*									      */
+/* Input:	char *progname - name of this program                         */
+/*									      */
+/* Return:	exits with -1						      */
+/*									      */
+/******************************************************************************/
+static void usage(char *progname)
+{				/* name of this program                       */
+	fprintf(stderr,
+		"Usage: %s -h -l NUML -t NUMT\n"
+		"\t -h Help!\n"
+		"\t -l Number of loops:               Default: %d\n"
+		"\t -t Number of threads to generate: Default: %d\n",
+		progname, num_loop, MAXT);
+	exit(-1);
+}
+
+/******************************************************************************/
+/* Function:	allocate_free				                      */
+/*								              */
+/* Description:	This function does the allocation and free by calling malloc  */
+/*		and free fuctions. The size of the memory to be malloced is   */
+/*		determined by the caller of this function. The size can be    */
+/*		a number from the fibannoaci series, power of 2 or 3 or 5     */
+/*									      */
+/* Input:	int repeat - number of times the alloc/free is repeated.      */
+/*		int scheme  - 0 to 3; selects how fast memory size grows      */
+/*								              */
+/* Return:	1 on failure						      */
+/*		0 on success						      */
+/******************************************************************************/
+int allocate_free(int repeat,	/* number of times to repeat allocate/free    */
+		  int scheme)
+{				/* how fast to increase block size            */
 	int loop;
 	const int MAXPTRS = 50;	/* only 42 or so get used on 32 bit machine */
 
