@@ -41,9 +41,7 @@ shmt09 shmt09
 shmt10 shmt10
 
 shm_test01	shm_test -l 10 -t 2
-# Hangs ARC built with Buildroot, or maybe it takes too much time to finish?
-# Several hours wasn't enough for some reason.
-#mallocstress01	mallocstress
+mallocstress01	mallocstress -l 10 -t 60
 
 #mmapstress01 mmapstress01 -p 20 -t 0.2
 mmapstress02 mmapstress02
