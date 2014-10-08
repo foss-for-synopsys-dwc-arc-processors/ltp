@@ -97,6 +97,8 @@ are too big for an embedded system.
 * syscalls/getrusage03 - Some of test cases in it allocate large amounts of
   memory which are not available in our default Linux setup. These cases are
   disabled inside the C source with preprocessor for ARC.
+* syscalls/splice02 - change input from seq 1 10000000 to seq 1 20000
+  The stock value takes 30+ mins on FPGA @ 50MHz
 
 
 ### Fatal tests
@@ -108,7 +110,6 @@ These tests cause system to crash or hung so they must be disabled.
 * syscalls/mkdir09 - hangs system
 * syscalls/pth_str02 - hangs system
 * syscalls/epoll-ltp - hangs system
-* syscalls/splice02 - hangs system
 * mm/mallocstress01 - hangs system.
 
 
