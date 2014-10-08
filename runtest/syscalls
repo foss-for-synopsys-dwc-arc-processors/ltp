@@ -122,17 +122,7 @@ dup3_01 dup3_01
 dup3_02 dup3_02
 
 epoll_create1_01 epoll_create1_01
-<<<<<<< HEAD
-epoll01 epoll-ltp
-epoll_ctl01 epoll_ctl01
-epoll_ctl02 epoll_ctl02
-epoll_wait01 epoll_wait01
-epoll_wait02 epoll_wait02
-epoll_wait03 epoll_wait03
-epoll_pwait01 epoll_pwait01
-=======
 #epoll01 epoll-ltp
->>>>>>> disable tests which hangs on Linux 3.9 + toolchain 4.8.
 
 eventfd01 eventfd01
 
@@ -1243,10 +1233,14 @@ sockioctl01 sockioctl01
 
 splice01 splice01
 <<<<<<< HEAD
+<<<<<<< HEAD
 splice02 seq 1 20000 | splice02
 =======
 #splice02 seq 1 10000000 | splice02 splice02-temp
 >>>>>>> disable tests which hangs on Linux 3.9 + toolchain 4.8.
+=======
+splice02 seq 1 20000 | splice02 splice02-temp
+>>>>>>> reenable splice02 with reduced iterations
 splice03 splice03
 splice04 splice04
 splice05 splice05
