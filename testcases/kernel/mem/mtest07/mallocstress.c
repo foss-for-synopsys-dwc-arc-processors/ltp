@@ -133,10 +133,11 @@ static void my_yield()
 static void usage(char *progname)
 {				/* name of this program                       */
 	fprintf(stderr,
-		"Usage: %s -d NUMDIR -f NUMFILES -h -t NUMTHRD\n"
+		"Usage: %s -h -l NUML -t NUMT\n"
 		"\t -h Help!\n"
-		"\t -l Number of loops:               Default: 1000\n"
-		"\t -t Number of threads to generate: Default: 30\n", progname);
+		"\t -l Number of loops:               Default: %d\n"
+		"\t -t Number of threads to generate: Default: %d\n",
+		progname, num_loop, MAXT);
 	exit(-1);
 }
 
