@@ -94,6 +94,8 @@ are too big for an embedded system.
   one time.
 * sched/hackbench02 - ARC Linux has problems if amount of threads in one
   process is more that 380.
+* mm/mallocstress01 - default loop iters 100 and 60 threads take too long
+  So iters reduced to 10
 
 
 ### Fatal tests
