@@ -870,9 +870,6 @@ recvfrom01 recvfrom01
 recvmsg01 recvmsg01
 recvmsg02 recvmsg02
 
-remap_file_pages01 remap_file_pages01
-remap_file_pages02 remap_file_pages02
-
 removexattr01 removexattr01
 removexattr02 removexattr02
 
