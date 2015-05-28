@@ -842,6 +842,33 @@ int path_exist(const char *path, ...)
 	return access(pathbuf, F_OK) == 0;
 }
 
+long read_meminfo(char *item)
+{
+	FILE *fp;
+	char line[BUFSIZ], buf[BUFSIZ];
+	long val;
+
+	if (!strcmp(item,"Hugepagesize:"))
+		return 2048;	// 2048k = 2M
+
+	fp = fopen(PATH_MEMINFO, "r");
+	if (fp == NULL)
+		tst_brkm(TBROK | TERRNO, cleanup, "fopen %s", PATH_MEMINFO);
+
+	while (fgets(line, BUFSIZ, fp) != NULL) {
+		if (sscanf(line, "%64s %ld", buf, &val) == 2)
+			if (strcmp(buf, item) == 0) {
+				fclose(fp);
+				return val;
+			}
+		continue;
+	}
+	fclose(fp);
+
+	tst_brkm(TBROK, cleanup, "cannot find \"%s\" in %s",
+		 item, PATH_MEMINFO);
+}
+
 void set_sys_tune(char *sys_file, long tune, int check)
 {
 	long val;
