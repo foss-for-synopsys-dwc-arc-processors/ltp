@@ -909,6 +909,9 @@ long read_meminfo(char *item)
 	char line[BUFSIZ], buf[BUFSIZ];
 	long val;
 
+	if (!strcmp(item,"Hugepagesize:"))
+		return 2048;	// 2048k = 2M
+
 	fp = fopen(PATH_MEMINFO, "r");
 	if (fp == NULL)
 		tst_brkm(TBROK | TERRNO, cleanup, "fopen %s", PATH_MEMINFO);
