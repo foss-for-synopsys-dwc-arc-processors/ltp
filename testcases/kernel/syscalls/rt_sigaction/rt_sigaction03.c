@@ -49,6 +49,7 @@
 #include "test.h"
 #include "usctest.h"
 #include "linux_syscall_numbers.h"
+#include "ltp_signal.h"
 
 #define INVAL_SIGSETSIZE -1
 
@@ -146,7 +147,7 @@ int set_handler(int sig, int sig_to_mask, int mask_flags)
 	 * sigsetsize was not equivalent to the size of a sigset_t type *
 	 */
 
-	TEST(ltp_syscall
+	TEST(ltp_syscall_sigaction
 	     (__NR_rt_sigaction, sig, &sa, &oldaction, INVAL_SIGSETSIZE));
 	if (TEST_RETURN == 0) {
 		return 0;

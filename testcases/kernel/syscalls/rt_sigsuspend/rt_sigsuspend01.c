@@ -143,7 +143,7 @@ int main(int ac, char **av)
 		act.sa_handler = sig_handler;
 #endif
 
-		TEST(ltp_syscall(__NR_rt_sigaction, SIGALRM, &act, &oact,
+		TEST(ltp_syscall_sigaction(__NR_rt_sigaction, SIGALRM, &act, &oact,
 			     SIGSETSIZE));
 		if (TEST_RETURN == -1) {
 			tst_brkm(TFAIL | TTERRNO, cleanup,

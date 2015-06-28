@@ -166,7 +166,7 @@ int main(int ac, char **av)
 			}
 
 			/* call rt_sigaction() */
-			TEST(ltp_syscall(__NR_rt_sigaction, TEST_SIG, &act,
+			TEST(ltp_syscall_sigaction(__NR_rt_sigaction, TEST_SIG, &act,
 				&oact, SIGSETSIZE));
 			if (TEST_RETURN < 0) {
 				tst_brkm(TFAIL | TTERRNO, cleanup,

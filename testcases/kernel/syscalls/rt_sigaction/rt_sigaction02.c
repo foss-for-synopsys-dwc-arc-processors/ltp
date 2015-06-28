@@ -49,6 +49,7 @@
 #include "test.h"
 #include "usctest.h"
 #include "linux_syscall_numbers.h"
+#include "ltp_signal.h"
 
 /*
  * For all but __mips__:
@@ -170,7 +171,7 @@ int main(int ac, char **av)
 					 * An invalid act or oact value was specified                   *
 					 */
 
-					TEST(ltp_syscall
+					TEST(ltp_syscall_sigaction
 					     (__NR_rt_sigaction, signal,
 					      INVAL_STRUCT, NULL, SIGSETSIZE));
 					if ((TEST_RETURN == -1)

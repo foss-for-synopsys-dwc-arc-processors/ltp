@@ -105,4 +105,13 @@ static inline int sig_initial(int sig)
 
 #endif /* LTP_RT_SIG_TEST */
 
+#ifdef __ARC__
+#define ltp_syscall_sigaction(NR, sig, act, oat, ...) ({ \
+	__ret = sigaction(sig, act, oact);		\
+	__ret; \
+})
+#else
+#define ltp_syscall_sigaction	ltp_syscall
+#endif
+
 #endif
