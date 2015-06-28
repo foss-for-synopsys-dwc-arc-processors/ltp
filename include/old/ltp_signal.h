@@ -53,4 +53,13 @@
 #define SIGSETSIZE (_NSIG / 8)
 #endif
 
+#ifdef __ARC__
+#define ltp_syscall_sigaction(NR, sig, act, oat, ...) ({ \
+	__ret = sigaction(sig, act, oact);		\
+	__ret; \
+})
+#else
+#define ltp_syscall_sigaction	ltp_syscall
+#endif
+
 #endif
