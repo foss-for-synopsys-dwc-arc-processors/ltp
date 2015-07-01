@@ -49,6 +49,8 @@
 #define NPROCESS 1000		/* Number of concurrent processes */
 #define NLOOP 1000		/* Number of shared memory object */
 
+int i_NLOOP=NLOOP, i_NPROCESS=NPROCESS;
+
 char name[NAME_SIZE];
 int *create_cnt;
 sem_t *sem;
@@ -61,7 +63,7 @@ int child_func(void)
 
 	sleep(1);
 	srand(time(NULL));
-	for (i = 0; i < NLOOP; i++) {
+	for (i = 0; i < i_NLOOP; i++) {
 		sprintf(name, SHM_NAME, i);
 		fd = shm_open(name, O_RDONLY | O_CREAT | O_EXCL,
 			      S_IRUSR | S_IWUSR);
@@ -79,10 +81,19 @@ int child_func(void)
 	return 0;
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	int i, pid, result_fd;
 	char semname[20];
+
+	if (argc > 1)
+		i_NPROCESS = atoi(argv[1]);
+
+	if (argc > 2)
+		i_NLOOP = atoi(argv[2]);
+
+	fprintf(stderr, "Running with %d processes for %d objects\n",
+		i_NPROCESS, i_NLOOP);
 
 	snprintf(semname, 20, "/sem23-1_%d", getpid());
 	sem = sem_open(semname, O_CREAT, 0777, 1);
@@ -115,7 +126,7 @@ int main(void)
 
 	*create_cnt = 0;
 
-	for (i = 0; i < NPROCESS; i++) {
+	for (i = 0; i < i_NPROCESS; i++) {
 		pid = fork();
 		if (pid == -1) {
 			perror("An error occurs when calling fork()");
@@ -128,13 +139,14 @@ int main(void)
 
 	while (wait(NULL) > 0) ;
 
-	for (i = 0; i < NLOOP; i++) {
+	fprintf(stderr, "create_cnt: %d\n", *create_cnt);
+
+	for (i = 0; i < i_NLOOP; i++) {
 		sprintf(name, SHM_NAME, i);
 		shm_unlink(name);
 	}
 
-	fprintf(stderr, "create_cnt: %d\n", *create_cnt);
-	if (*create_cnt != NLOOP) {
+	if (*create_cnt != i_NLOOP) {
 		printf("Test FAILED\n");
 		return PTS_FAIL;
 	}
