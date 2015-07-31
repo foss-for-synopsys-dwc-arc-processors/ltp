@@ -43,6 +43,8 @@ char *TCID = "profil01";
 
 int TST_TOTAL = 1;
 
+#ifndef __UCLIBC__
+
 static volatile sig_atomic_t profil_done;
 
 static void alrm_handler(int sig)
@@ -128,9 +130,18 @@ int main(int ac, char *av[])
 
 	tst_exit();
 }
+<<<<<<< HEAD
 #else /* systems without profil() */
 int main(void)
 {
         tst_brkm(TCONF, NULL, "system doesn't have profil() support");
+=======
+
+#else
+int main(void)
+{
+	/* uClibc does not have profiling support */
+	tst_exit();
+>>>>>>> ARC: Disable syscalls/profil01 for uClibc since it has no profiling support
 }
 #endif
