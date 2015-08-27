@@ -94,11 +94,18 @@ ifeq ($(srcdir),)
 srcdir				:= .
 endif
 
-# autotools, *clean, and help don't require config.mk, features.mk, etc...
-ifeq ($(filter autotools %clean .gitignore gitignore.% help,$(MAKECMDGOALS)),)
+# autotools and help don't require config.mk, features.mk, etc...
+ifeq ($(filter autotools .gitignore gitignore.% help,$(MAKECMDGOALS)),)
 
+# If config.mk and features.mk does not exist it's not an error for *clean
+# targets.
+ifeq ($(filter %clean,$(MAKECMDGOALS)),)
 include $(abs_top_builddir)/include/mk/config.mk
 include $(abs_top_builddir)/include/mk/features.mk
+else
+-include $(abs_top_builddir)/include/mk/config.mk
+-include $(abs_top_builddir)/include/mk/features.mk
+endif
 
 # START out-of-build-tree check.
 ifneq ($(abs_builddir),$(abs_srcdir))
