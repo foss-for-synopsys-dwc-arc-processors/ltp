@@ -130,18 +130,11 @@ int main(int ac, char *av[])
 
 	tst_exit();
 }
-<<<<<<< HEAD
-#else /* systems without profil() */
-int main(void)
-{
-        tst_brkm(TCONF, NULL, "system doesn't have profil() support");
-=======
 
 #else
 int main(void)
 {
 	/* uClibc does not have profiling support */
 	tst_exit();
->>>>>>> ARC: Disable syscalls/profil01 for uClibc since it has no profiling support
 }
 #endif
