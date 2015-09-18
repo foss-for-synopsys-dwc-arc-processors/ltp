@@ -173,4 +173,6 @@ should be disabled.
 * syscalls/ioctl03 - requires /dev/net/tun device.
 * several shell scripts in Open POSIX test suite start with empty line. These
   need to be removed so bash bang will be on the first line.
+* `dd` utility from BusyBox uses kD suffix instead of kB for 1000 multiplier.
+  Thus it's fixed in `runltp` script.
 
