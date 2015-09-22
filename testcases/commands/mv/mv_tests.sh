@@ -167,4 +167,10 @@ test2()
 	fi
 }
 
-tst_run
+setup
+TST_CLEANUP=cleanup
+
+test01
+#test02
+
+tst_exit
