@@ -180,6 +180,6 @@ setup
 TST_CLEANUP=cleanup
 
 test01
-test02
+#test02
 
 tst_exit
