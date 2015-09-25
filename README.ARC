@@ -170,3 +170,16 @@ should be disabled.
 * `dd` utility from BusyBox uses kD suffix instead of kB for 1000 multiplier.
   Thus it's fixed in `runltp` script.
 
+## Requirements for the environment
+
+* Linux must be built with support of loop block devices. Thus it's
+  necessary to enable these Linux kernel options:
+  CONFIG_BLK_DEV
+  CONFIG_BLK_DEV_LOOP
+* Linux must contain these packages: `util-linux`, `e2fsprogs`, `bash`. They
+  may be included by enabling these Buildroot options:
+  BR2_PACKAGE_UTIL_LINUX
+  BR2_PACKAGE_UTIL_LINUX_BINARIES
+  BR2_PACKAGE_E2FSPROGS
+  BR2_PACKAGE_BUSYBOX_SHOW_OTHERS
+  BR2_PACKAGE_BASH
