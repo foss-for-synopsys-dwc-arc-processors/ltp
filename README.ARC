@@ -177,6 +177,36 @@ should be disabled.
   need to be removed so bash bang will be on the first line.
 * `dd` utility from BusyBox uses kD suffix instead of kB for 1000 multiplier.
   Thus it's fixed in `runltp` script.
+* syscalls/chmod06 - loopback device is required
+* syscalls/inotify03 - loopback device is required
+* syscalls/chmod06 - loopback device is required
+* syscalls/chown04 - loopback device is required
+* syscalls/creat06 - loopback device is required
+* syscalls/fchmod06 - loopback device is required
+* syscalls/ftruncate04 - loopback device is required
+* syscalls/ftruncate04_64 - loopback device is required
+* syscalls/lchown03 - loopback device is required
+* syscalls/link08 - loopback device is required
+* syscalls/mkdir03 - loopback device is required
+* syscalls/mkdirat02 - loopback device is required
+* syscalls/mknod07 - loopback device is required
+* syscalls/mknodat02 - loopback device is required
+* syscalls/mmap16 - loopback device is required
+* syscalls/mount01 - loopback device is required
+* syscalls/mount02 - loopback device is required
+* syscalls/mount03 - loopback device is required
+* syscalls/mount04 - loopback device is required
+* syscalls/mount06 - loopback device is required
+* syscalls/open12 - loopback device is required
+* syscalls/rmdir02 - loopback device is required
+* syscalls/umount01 - loopback device is required
+* syscalls/umount02 - loopback device is required
+* syscalls/umount03 - loopback device is required
+* syscalls/umount2_01 - loopback device is required
+* syscalls/umount2_02 - loopback device is required
+* syscalls/umount2_03 - loopback device is required
+* syscalls/utimes01 - loopback device is required
+* syscalls/utime06 - loopback device is required
 
 ## Requirements for the environment
 
