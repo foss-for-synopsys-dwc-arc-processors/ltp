@@ -235,10 +235,6 @@ static int ltp_rt_sigaction(int signum, const struct sigaction *act,
 	ret = ltp_syscall(__NR_rt_sigaction, signum,
 			kact_p, koact_p,
 			stub, sigsetsize);
-#elif defined(__ARC__)
-	ret = ltp_syscall_sigaction(__NR_rt_sigaction, signum,
-			kact_p, koact_p,
-			sigsetsize);
 #else
 	ret = ltp_syscall(__NR_rt_sigaction, signum,
 			kact_p, koact_p,
