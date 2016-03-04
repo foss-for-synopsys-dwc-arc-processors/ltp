@@ -43,8 +43,6 @@ char *TCID = "profil01";
 
 int TST_TOTAL = 1;
 
-#ifndef __UCLIBC__
-
 static volatile sig_atomic_t profil_done;
 
 static void alrm_handler(int sig)
