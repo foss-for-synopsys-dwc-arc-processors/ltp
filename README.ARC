@@ -150,7 +150,6 @@ should be disabled.
 * io/aio02 - asynchronous IO isn't supported by uClibc
 * mm/mtest06_2 - test requires 1 GiB of RAM but board has only 512 MiB
 * numa/Numa-testcases - test requires command `numactl`
-* syscalls/profil01 - uClibc has no profiling support
 * mv/mv_tests.sh - disable test02 subtest because it uses `-b` flag of `mv`
   which is not presented in `mv` from BusyBox
 
