@@ -155,13 +155,6 @@ static void __sigreturn_stub(void)
 static int ltp_rt_sigaction(int signum, const struct sigaction *act,
 			struct sigaction *oact, size_t sigsetsize)
 {
-#ifdef __arc__
-	/*
-	 * No playing games with various internals of sigaction / fields
-	 * just use whatever libc + kernel provide
-	 */
-	return sigaction(signum, act, oact);
-#else
 	int ret;
 	struct kernel_sigaction kact, koact;
 	struct kernel_sigaction *kact_p = NULL;
@@ -225,7 +218,6 @@ static int ltp_rt_sigaction(int signum, const struct sigaction *act,
 	}
 
 	return ret;
-#endif
 }
 
 #endif /* LTP_RT_SIGACTION_H */
