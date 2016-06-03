@@ -60,7 +60,7 @@ static const int flags[] = { 0, 0, 0, 0, 9999, 0 };
 
 #if !defined(HAVE_FSTATAT)
 #if (__NR_fstatat64 > 0)
-int fstatat(int dirfd, const char *filename, struct stat64 *statbuf, int flags)
+int fstatat(int dirfd, const char *filename, struct stat *statbuf, int flags)
 {
 	return ltp_syscall(__NR_fstatat64, dirfd, filename, statbuf, flags);
 }
