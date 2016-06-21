@@ -56,6 +56,7 @@ them at once provide --enable-arc-support flag to ./configure command.
 * kernel/timers/leapsec - uses clock_nanosleep
 * kernel/syscalls/flock/flock03 - build error
 * kernel/syscalls/fadvise - build error
+* kernel/syscalls/fanotify - build error, O_DIRECTORY not found (900106878)
 * kernel/syscalls/ustat - build error
 * security/prot_hsymlinks - build error
 * kernel/containers/mqns/check_mqns_enabled.c - linker error
