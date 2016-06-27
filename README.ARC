@@ -113,6 +113,7 @@ These tests cause system to crash or hung so they must be disabled.
 * syscalls/mkdir09 - hangs system
 * syscalls/pth_str02 - hangs system
 * syscalls/epoll-ltp - hangs system
+* syscalls/madvise05 - hangs the system, STAR 9001053308
 
 
 ### Not applicable tests
