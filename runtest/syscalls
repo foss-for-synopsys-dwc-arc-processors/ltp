@@ -759,11 +759,10 @@ mincore02 mincore02
 
 madvise01 madvise01
 madvise02 madvise02
-madvise05 madvise05
-madvise06 madvise06
-madvise07 madvise07
-madvise08 madvise08
-madvise09 madvise09
+madvise03 madvise03
+madvise04 madvise04
+# See STAR 9001053308
+# madvise05 madvise05
 
 newuname01 newuname01
 
