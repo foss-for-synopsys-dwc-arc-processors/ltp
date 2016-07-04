@@ -108,6 +108,7 @@ are too big for an embedded system.
 
 These tests cause system to crash or hung so they must be disabled.
 
+* syscalls/ftruncate02_64 - test hangs itself, STAR 9001065763
 
 
 ### Not applicable tests

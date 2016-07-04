@@ -322,7 +322,8 @@ fsync03 fsync03
 ftruncate01 ftruncate01
 ftruncate01_64 ftruncate01_64
 ftruncate02 ftruncate02
-ftruncate02_64 ftruncate02_64
+# STAR 9001065763
+# ftruncate02_64 ftruncate02_64
 ftruncate03 ftruncate03
 ftruncate03_64 ftruncate03_64
 ftruncate04 ftruncate04
