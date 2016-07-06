@@ -1352,7 +1352,8 @@ tkill02 tkill02
 truncate01 truncate01
 truncate01_64 truncate01_64
 truncate02 truncate02
-truncate02_64 truncate02_64
+# STAR 9001065763
+# truncate02_64 truncate02_64
 truncate03 truncate03
 truncate03_64 truncate03_64
 
