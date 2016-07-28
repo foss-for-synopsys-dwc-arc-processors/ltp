@@ -762,8 +762,7 @@ madvise01 madvise01
 madvise02 madvise02
 madvise03 madvise03
 madvise04 madvise04
-# See STAR 9001053308
-# madvise05 madvise05
+madvise05 madvise05
 
 newuname01 newuname01
 
