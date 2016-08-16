@@ -114,7 +114,6 @@ These tests cause system to crash or hung so they must be disabled.
 * syscalls/pth_str02 - hangs system
 * syscalls/epoll-ltp - hangs system
 * syscalls/ftruncate02_64 - test hangs itself, STAR 9001065763
-* syscalls/truncate02_64 - test hangs itself, STAR 9001065763
 
 
 ### Not applicable tests
