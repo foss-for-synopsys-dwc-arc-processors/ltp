@@ -41,11 +41,10 @@
 
 #include "test.h"
 #include "safe_macros.h"
+#include "getrusage03.h"
 
 char *TCID = "getrusage03";
 int TST_TOTAL = 1;
-
-#define DELTA_MAX	10240
 
 static struct rusage ru;
 static long maxrss_init;
@@ -76,8 +75,8 @@ int main(int argc, char *argv[])
 	for (lc = 0; TEST_LOOPING(lc); lc++) {
 		tst_count = 0;
 
-		tst_resm(TINFO, "allocate 100MB");
-		consume(100);
+		tst_resm(TINFO, "allocate %dMB", CONSUME_INITIAL_MB);
+		consume(CONSUME_INITIAL_MB);
 
 		inherit_fork();
 		inherit_fork2();
@@ -126,10 +125,10 @@ static void inherit_fork2(void)
 
 	SAFE_GETRUSAGE(cleanup, RUSAGE_CHILDREN, &ru);
 	tst_resm(TINFO, "initial.children = %ld", ru.ru_maxrss);
-	if (is_in_delta(ru.ru_maxrss - 102400))
-		tst_resm(TPASS, "initial.children ~= 100MB");
+	if (is_in_delta(ru.ru_maxrss - CONSUME_INITIAL_MB * 1024))
+		tst_resm(TPASS, "initial.children ~= %dMB", CONSUME_INITIAL_MB);
 	else
-		tst_resm(TFAIL, "initial.children !~= 100MB");
+		tst_resm(TFAIL, "initial.children !~= %dMB", CONSUME_INITIAL_MB);
 
 	switch (pid = fork()) {
 	case -1:
@@ -162,19 +161,20 @@ static void fork_malloc(void)
 		tst_brkm(TBROK | TERRNO, cleanup, "fork #3");
 	case 0:
 		maxrss_init = ru.ru_maxrss;
-		tst_resm(TINFO, "child allocate +50MB");
-		consume(50);
+		tst_resm(TINFO, "child allocate +%dMB", CONSUME_FORK_MALLOC_MB);
+		consume(CONSUME_FORK_MALLOC_MB);
 		SAFE_GETRUSAGE(cleanup, RUSAGE_SELF, &ru);
 		tst_resm(TINFO, "child.self = %ld", ru.ru_maxrss);
-		exit(is_in_delta(maxrss_init + 51200 - ru.ru_maxrss));
+		exit(is_in_delta(maxrss_init + CONSUME_FORK_MALLOC_MB * 1024 - ru.ru_maxrss));
 	default:
 		break;
 	}
 
 	if (waitpid(pid, &status, WUNTRACED | WCONTINUED) == -1)
 		tst_brkm(TBROK | TERRNO, cleanup, "waitpid");
-	check_return(WEXITSTATUS(status), "initial.self + 50MB ~= child.self",
-		     "initial.self + 50MB !~= child.self");
+	check_return(WEXITSTATUS(status),
+		     "initial.self + " N_TO_STR(CONSUME_FORK_MALLOC_MB) "MB ~= child.self",
+		     "initial.self + " N_TO_STR(CONSUME_FORK_MALLOC_MB) "MB !~= child.self");
 }
 
 /* Testcase #04: grandchild maxrss
@@ -190,7 +190,7 @@ static void grandchild_maxrss(void)
 	case -1:
 		tst_brkm(TBROK | TERRNO, cleanup, "fork #4");
 	case 0:
-		retval = system("getrusage03_child -g 300");
+		retval = system("getrusage03_child -g " N_TO_STR(CONSUME_GRANDCHILD_MB));
 		if ((WIFEXITED(retval) && WEXITSTATUS(retval) != 0))
 			tst_brkm(TBROK | TERRNO, cleanup, "system");
 		exit(0);
@@ -205,10 +205,10 @@ static void grandchild_maxrss(void)
 
 	SAFE_GETRUSAGE(cleanup, RUSAGE_CHILDREN, &ru);
 	tst_resm(TINFO, "post_wait.children = %ld", ru.ru_maxrss);
-	if (is_in_delta(ru.ru_maxrss - 307200))
-		tst_resm(TPASS, "child.children ~= 300MB");
+	if (is_in_delta(ru.ru_maxrss - CONSUME_GRANDCHILD_MB * 1024))
+		tst_resm(TPASS, "child.children ~= %dMB", CONSUME_GRANDCHILD_MB);
 	else
-		tst_resm(TFAIL, "child.children !~= 300MB");
+		tst_resm(TFAIL, "child.children !~= %dMB", CONSUME_GRANDCHILD_MB);
 }
 
 /* Testcase #05: zombie
@@ -225,7 +225,7 @@ static void zombie(void)
 	case -1:
 		tst_brkm(TBROK, cleanup, "fork #5");
 	case 0:
-		retval = system("getrusage03_child -n 400");
+		retval = system("getrusage03_child -n " N_TO_STR(CONSUME_ZOMBIE_MB));
 		if ((WIFEXITED(retval) && WEXITSTATUS(retval) != 0))
 			tst_brkm(TBROK | TERRNO, cleanup, "system");
 		exit(0);
@@ -248,10 +248,10 @@ static void zombie(void)
 
 	SAFE_GETRUSAGE(cleanup, RUSAGE_CHILDREN, &ru);
 	tst_resm(TINFO, "post_wait.children = %ld", ru.ru_maxrss);
-	if (is_in_delta(ru.ru_maxrss - 409600))
-		tst_resm(TPASS, "post_wait.children ~= 400MB");
+	if (is_in_delta(ru.ru_maxrss - CONSUME_ZOMBIE_MB * 1024))
+		tst_resm(TPASS, "post_wait.children ~= %dMB", CONSUME_ZOMBIE_MB);
 	else
-		tst_resm(TFAIL, "post_wait.children !~= 400MB");
+		tst_resm(TFAIL, "post_wait.children !~= %dMB", CONSUME_ZOMBIE_MB);
 }
 
 /* Testcase #06: SIG_IGN
@@ -269,7 +269,7 @@ static void sig_ign(void)
 	case -1:
 		tst_brkm(TBROK, cleanup, "fork #6");
 	case 0:
-		retval = system("getrusage03_child -n 500");
+		retval = system("getrusage03_child -n " N_TO_STR(CONSUME_SIG_IGN_MB));
 		if ((WIFEXITED(retval) && WEXITSTATUS(retval) != 0))
 			tst_brkm(TBROK | TERRNO, cleanup, "system");
 		exit(0);

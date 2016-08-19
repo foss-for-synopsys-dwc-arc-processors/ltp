@@ -34,11 +34,10 @@
 
 #include "test.h"
 #include "safe_macros.h"
+#include "getrusage03.h"
 
 char *TCID = "getrusage03_child";
 int TST_TOTAL = 1;
-
-#define DELTA_MAX	10240
 
 static int opt_consume, opt_grand, opt_show, opt_self, opt_child;
 static char *consume_str, *grand_consume_str, *self_str, *child_str;
