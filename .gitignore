@@ -72,3 +72,4 @@ logfile.*
 /lib/tests/tst_dataroot01
 /lib/tests/tst_dataroot02
 /lib/tests/tst_dataroot03
+*.sh
