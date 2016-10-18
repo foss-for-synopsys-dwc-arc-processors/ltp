@@ -34,7 +34,7 @@ FILTER_OUT_DIRS	+= profil
 endif
 
 ifeq ($(ENABLE_ARC_SUPPORT), yes)
-FILTER_OUT_DIRS += clock_nanosleep fadvise ustat sighold sigrelse fanotify
+FILTER_OUT_DIRS += clock_nanosleep fadvise ustat sighold sigrelse
 endif
 
 ifeq ($(UCLIBC),1)
