@@ -15,7 +15,7 @@ mtest01w mtest01 -p80 -w
 #test for race conditions
 mtest05   mmstress
 mtest06   mmap1 -x 0.05
-#mtest06_2 mmap2 -x 0.002 -a -p
+mtest06_2 mmap2 -x 0.002 -a -p
 mtest06_3 mmap3 -x 0.002 -p
 # Remains diabled till the infinite loop problem is solved
 #mtest-6_4 shmat1 -x 0.00005
@@ -41,9 +41,9 @@ shmt09 shmt09
 shmt10 shmt10
 
 shm_test01	shm_test -l 10 -t 2
-mallocstress01	mallocstress -l 10 -t 60
+mallocstress01	mallocstress
 
-#mmapstress01 mmapstress01 -p 20 -t 0.2
+mmapstress01 mmapstress01 -p 20 -t 0.2
 mmapstress02 mmapstress02
 mmapstress03 mmapstress03
 mmapstress04 TMPFILE=`mktemp /tmp/example.XXXXXXXXXX`; ls -lR /usr/include/ > $TMPFILE; mmapstress04 $TMPFILE
@@ -51,8 +51,8 @@ mmapstress05 mmapstress05
 mmapstress06 mmapstress06 20
 mmapstress07 TMPFILE=`mktemp /tmp/example.XXXXXXXXXXXX`; mmapstress07 $TMPFILE
 mmapstress08 mmapstress08
-#mmapstress09 mmapstress09 -p 20 -t 0.2
-#mmapstress10 mmapstress10 -p 20 -t 0.2
+mmapstress09 mmapstress09 -p 20 -t 0.2
+mmapstress10 mmapstress10 -p 20 -t 0.2
 
 mmap10 mmap10
 mmap10_1 mmap10 -a
