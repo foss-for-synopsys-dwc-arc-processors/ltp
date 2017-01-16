@@ -30,7 +30,7 @@ FILTER_OUT_DIRS	+= capget capset chmod chown clone fork getcontext llseek \
 endif
 
 ifeq ($(UCLIBC),1)
-FILTER_OUT_DIRS	+= profil
+FILTER_OUT_DIRS	+= profil quotactl
 endif
 ifeq ($(ENABLE_ARC_SUPPORT), yes)
 FILTER_OUT_DIRS += clock_nanosleep fadvise ustat request_key
