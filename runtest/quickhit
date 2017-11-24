@@ -198,7 +198,7 @@ open03 open03
 # Basic test for open(2)
 pathconf01 pathconf01
 # Basic test for pathconf(2)
-pause01 pause01
+#pause01 pause01
 # Basic test for pause(2)
 read01 read01
 # Basic test for read(2)
