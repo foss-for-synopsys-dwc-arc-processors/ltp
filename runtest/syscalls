@@ -495,15 +495,15 @@ io_cancel01 io_cancel01
 io_destroy01 io_destroy01
 io_getevents01 io_getevents01
 io_setup01 io_setup01
-io_submit01 io_submit01
+#io_submit01 io_submit01
 
-keyctl01 keyctl01
-keyctl02 keyctl02
-keyctl03 keyctl03
+#keyctl01 keyctl01
+#keyctl02 keyctl02
+#keyctl03 keyctl03
 keyctl04 keyctl04
 keyctl05 keyctl05
 keyctl06 keyctl06
-keyctl07 keyctl07
+#keyctl07 keyctl07
 
 kcmp01 kcmp01
 kcmp02 kcmp02
@@ -924,7 +924,7 @@ renameat201 renameat201
 renameat202 renameat202 -i 10
 
 request_key01 request_key01
-request_key02 request_key02
+#request_key02 request_key02
 cve-2017-6951 cve-2017-6951
 
 rmdir01 rmdir01
