@@ -853,7 +853,7 @@ long read_meminfo(char *item)
 
 	fp = fopen(PATH_MEMINFO, "r");
 	if (fp == NULL)
-		tst_brkm(TBROK | TERRNO, cleanup, "fopen %s", PATH_MEMINFO);
+		tst_brk(TBROK | TERRNO, "fopen %s", PATH_MEMINFO);
 
 	while (fgets(line, BUFSIZ, fp) != NULL) {
 		if (sscanf(line, "%64s %ld", buf, &val) == 2)
@@ -865,7 +865,7 @@ long read_meminfo(char *item)
 	}
 	fclose(fp);
 
-	tst_brkm(TBROK, cleanup, "cannot find \"%s\" in %s",
+	tst_brk(TBROK, "cannot find \"%s\" in %s",
 		 item, PATH_MEMINFO);
 }
 
